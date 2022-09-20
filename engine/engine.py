@@ -10,9 +10,8 @@ class CapuletEngine(Engine):
         self.last_service_mileage = last_service_mileage
         self.current_mileage = current_mileage
     
-    @abstractmethod
     def needs_service(self):
-        pass
+        return self.current_mileage - self.last_service_mileage > 30_000
 
 
 class WilloughbyEngine(Engine):
@@ -20,17 +19,15 @@ class WilloughbyEngine(Engine):
         self.last_service_mileage = last_service_mileage
         self.current_mileage = current_mileage
     
-    @abstractmethod
     def needs_service(self):
-        pass
+        return self.current_mileage - self.last_service_mileage > 60_000
 
 
 class SternmanEngine(Engine):
     def __init__(self, warning_light_on = False):
         self.warning_light_on = warning_light_on
     
-    @abstractmethod
     def needs_service(self):
-        pass
+        return self.warning_light_on
 
 
